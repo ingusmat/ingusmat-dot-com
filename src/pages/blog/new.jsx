@@ -4,7 +4,7 @@ import * as Showdown from "showdown";
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import * as Cookies from "es-cookie";
 
-const NEW_POST_URL = '/posts/new';
+const NEW_POST_URL = '/api/posts/new';
 function getCookieValue(a) {
   var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
   return b ? b.pop() : '';
@@ -97,6 +97,12 @@ class BlogNew extends React.Component<{}, AppState> {
                     onChange={(event) => this.setState({title: event.target.value})}
                   />
                 </div>
+              </div>
+              <div className="control">
+                <label className="checkbox">
+                  <input checked={this.state.published} onClick={(event) => this.setState({published: !this.state.published})} type="checkbox" />
+                    Published
+                </label>
               </div>
               <div className="field">
                 <label className="label">Main Image</label>

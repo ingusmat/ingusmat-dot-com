@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const POSTS_URL = '/posts/all/0/10';
+const POSTS_URL = '/api/posts/all/0/10';
 
 /** 
  Describe component here.        

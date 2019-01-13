@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './styles/main.scss';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import Blog from './pages/Blog';
 import BlogView from './pages/blog/view.jsx';
@@ -50,24 +49,26 @@ class App extends Component {
       <Router user={this.props.user}>
         <div>
           <Navbar signOutUser={this.signOutUser} signInUser={this.signInUser} user={this.state.user}/>
-          <Route
-            exact path="/"
-            render={(props) => <Home user={this.state.user} />}
-          />
-          <Route path="/blog/index" component={BlogIndex} />
-          <Route
-            path="/blog/new"
-            render={(props) => <BlogNew user={this.state.user} />}
-          />
-          <Route
-            path="/blog/:slug"
-            render={(props) => <BlogView user={this.state.user} />}
-          />
-          <Route exact path="/blog/" component={Blog} />
-          <Route path="/music/:item" component={Music} />
-          <Route exact path="/music/" component={Music} />
-          <Route path="/dev/:item" component={Dev} />
-          <Route exact path="/Dev/" component={Dev} />
+          <Switch>
+            <Route
+              exact path="/"
+              render={(props) => <Home user={this.state.user} />}
+            />
+            <Route path="/blog/index" component={BlogIndex} />
+            <Route
+              exact path="/blog/new"
+              render={(props) => <BlogNew user={this.state.user} />}
+            />
+            <Route
+              path="/blog/:slug"
+              render={(props) => <BlogView user={this.state.user} slug={props.match.params.slug}  />}
+            />
+            <Route exact path="/blog/" component={Blog} />
+            <Route path="/music/:item" component={Music} />
+            <Route exact path="/music/" component={Music} />
+            <Route path="/dev/:item" component={Dev} />
+            <Route exact path="/Dev/" component={Dev} />
+          </Switch>
         </div>
       </Router>
     );

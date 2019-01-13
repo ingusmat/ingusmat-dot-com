@@ -1,7 +1,7 @@
 import * as Cookies from 'es-cookie';
 
-const USER_SIGNIN_URL = '/users/signin';
-const USER_AUTH_URL = '/users/auth';
+const USER_SIGNIN_URL = '/api/users/signin';
+const USER_AUTH_URL = '/api/users/auth';
 
 export const userSignIn = function(email, password, cb) {
   console.log('signing in');
