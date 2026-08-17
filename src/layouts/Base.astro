@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string
+  description?: string
+}
+
+const { title, description = 'ingusmat.com — playground and blog' } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="ingusmat.com" href="/rss.xml" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <style>
+      @font-face {
+        font-family: 'CaskaydiaCove';
+        src: url('/fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf') format('truetype');
+        font-weight: bold;
+      }
+
+      body {
+        font-family: 'CaskaydiaCove', monospace;
+        background-color: #fcc901;
+        margin: 0;
+        color: #4d4637;
+      }
+
+      a {
+        color: #009c76;
+      }
+
+      a:hover {
+        color: #00d6aa;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

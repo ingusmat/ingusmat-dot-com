@@ -1,0 +1,51 @@
+---
+import Base from './Base.astro'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+const { title, date, description } = post.data
+const formatted = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+---
+
+<Base title={`${title} — ingusmat.com`} description={description}>
+  <main>
+    <nav><a href="/blog">← all posts</a></nav>
+    <article>
+      <header>
+        <h1>{title}</h1>
+        <time datetime={date.toISOString()}>{formatted}</time>
+      </header>
+      <slot />
+    </article>
+  </main>
+</Base>
+
+<style>
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  nav {
+    margin-bottom: 2rem;
+  }
+
+  header {
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 0 0 0.5rem;
+  }
+
+  time {
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+</style>

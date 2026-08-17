@@ -19,7 +19,7 @@ function updateSpeed() {
   speed *= speedDir === 1 ? 1.05 : 1 / 1.05
   if (speed >= 2) speedDir = -1
   else if (speed <= 1.05) speedDir = 1
-  const others = colors.filter(c => c !== backgroundColor.value)
+  const others = colors.filter((c) => c !== backgroundColor.value)
   backgroundColor.value = others[Math.floor(Math.random() * others.length)]
 }
 
@@ -55,8 +55,6 @@ function tick() {
     vy = -Math.abs(vy)
     updateSpeed()
   }
-
-  console.log(`Speed: ${speed.toFixed(2)}`)
 
   rafId = requestAnimationFrame(tick)
 }
@@ -109,6 +107,40 @@ h1 {
   height: 200px;
   position: absolute;
   top: 0;
+  left: 0;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.cartoon-ingus {
+  height: 600px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.cartoon-ingus {
+  height: 600px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.cartoon-ingus {
+  height: 600px;
+  position: absolute;
+  bottom: 0;
   left: 0;
 }
 </style>
